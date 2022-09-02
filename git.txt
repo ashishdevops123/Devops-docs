@@ -1,0 +1,168 @@
+git init
+git config --global user.name "ashish"
+git config --global user.email "ashishsmart2401@gmail.com"
+git log --oneline
+git add .
+git add 1.txt
+git add *.txt
+git add folder/*.txt
+git add -u  === it adds only the modified(once part of VCS 
+files to staging
+git add -A === it adds only the untracked files
+untracked files are those that are never part of VCS
+
+1.......To move the staged files from staging area to working tree
+as modified state we have 3 steps
+1.txt in staging area
+
+git restore --staged 1.txt  /// git reset 1.txt
+
+2........After moving to the worktree(modified) if you want to move 
+to the unmodified state
+1.txt in the worktree but as modified file 
+unmodified state is a state where it will not be viewed in git status
+ 
+git restore --worktree 1.txt
+
+
+3........If you want to move the files from staging area to
+unmodified state
+
+git restore -SW 1.txt  / git reset 1.txt 
+
+
+
+untracked files to be removed
+
+git clean -f  .... it will removes the untracked file from the git
+git clean -fd .... it will remove the untracked directories from the git 
+
+
+git reset (older command)
+
+git reset --hard 
+
+Then the files which are added to staging area as well as the files
+in the working tree all will be vanished
+
+
+Git branches
+
+git branch === it will view all the branches in git
+git branch <branchname> === it will create a branch
+git checkout <branchname>  == to move into the branch
+git checkout -b <branchname> ==create and moves into the branch
+
+
+Detached head state
+if you would like to know about the state of files at a particular commit
+or you messed up then 
+if your head is pointing to a particular commit id
+by using
+git checkout <commitid>
+
+
+git cat-file -t <id> # to know the type
+git cat-file -p <id> # to know the contents
+
+
+Bringing changes from one branch to another
+we have
+cherry pick
+rebase has two approaches by merging
+
+fast-forward merge
+let us consider a master branch and feature branch
+no commits done on master branch
+commits done on feature branch
+now we have 2 heads pointing to two branches latest commit
+so to bring the changes 
+
+git checkout feature  == switch to the branch in which you would like to merge the other branch
+
+git merge master = after switching specify the branch name which you like to merge.
+
+no conflicts arises because no changes done on the master branch
+no new commit created
+
+
+
+
+Three way merge
+in this after branch creation if we are doing changes for the master
+and feature and would like to merge the branches
+
+
+git checkout feature  == switch to the branch in which you would like to merge the other branch
+
+git merge master = after switching specify the branch name which you like to merge.
+
+
+Then conflict comes
+
+edit the file 
+git add .
+git commit    no message needed
+save the file
+
+It creates a new commit and will have two parents
+
+
+
+Cherry pick
+
+To bring the changes for a particular commit from anywhere to current head position
+
+we have cherry-pick it only picks the changes made during that particular commit
+and it will not carry history of its previous commits
+
+git cherry-pick <commitid>
+
+merge conflicts may or maynot arrises
+
+edit the file to resolve the conflicts
+
+git add .
+git cherry-pick --continue
+
+commit id which has been hanged will be renamed
+
+
+REbase
+
+
+We need the changes done in master branch after feature branch creation to be part of feature branch,
+ the best way to do it would be as shown graphically below
+
+Switch to the main branch from which bymistakenly feature branch is created
+
+git rebase master
+resolve merge conflicts
+git add .
+git rebase --continue
+
+
+
+git remote local repos adding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
