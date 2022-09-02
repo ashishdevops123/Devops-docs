@@ -145,6 +145,12 @@ git rebase --continue
 
 git remote local repos adding
 
+git remote add <remoterepo> <url>
+
+git push <remoterepo> <branchwouldliketopush>
+
+
+
 
 
 
