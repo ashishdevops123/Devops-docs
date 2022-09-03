@@ -1,0 +1,71 @@
+plan
+code
+build == sonaranalysis
+        compile the code
+        run the unit tests
+        create a package
+
+test 
+       Automation test/manual testing 
+       release
+
+deploy
+      Terraform, Ansible
+
+operate
+monitor
+       promotheus,elastic search
+
+
+for applications developed in java
+
+we use maven as a build tool
+    In Maven we have goals/build phase
+         compile => Creates .class files
+         test => runs the unit tests and generates the reports. This will also try to compile
+         package => creates the jar/war file. This will execute compile + test
+         install =>  Create the jar/war file and dependency pom file in M2 Folder
+         deploy  =>  copy the final package to the remote repository
+         clean => remove the target folder
+
+
+1.mvn package    
+2.mvn compile test package
+3.mvn clean package
+
+1 & 2 does same work
+ 3 deletes the previous workspace and creates again
+
+
+the below two helps to view them on your console
+
+Test results = target/surefire-reports/*.xml   ===== publish junit test results
+
+artifacts    = target/*.jar   or target/*.war  ===== Archieve the artifacts
+
+
+
+Different projects can be run at build-in-node or nodes that are configured to master 
+
+using labels
+
+jenkins to build pipelines using two approaches
+
+scripted pipeline
+Declarative pipeline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
