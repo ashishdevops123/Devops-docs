@@ -1,0 +1,141 @@
+NAME                              SHORTNAMES   APIVERSION                             NAMESPACED   KIND
+configmaps                        cm           v1                                     true         ConfigMap
+namespaces                        ns           v1                                     false        Namespace
+nodes                             no           v1                                     false        Node
+persistentvolumeclaims            pvc          v1                                     true         PersistentVolumeClaim
+persistentvolumes                 pv           v1                                     false        PersistentVolume
+pods                              po           v1                                     true         Pod
+podtemplates                                   v1                                     true         PodTemplate
+replicationcontrollers            rc           v1                                     true         ReplicationController
+secrets                                        v1                                     true         Secret
+services                          svc          v1                                     true         Service
+daemonsets                        ds           apps/v1                                true         DaemonSet
+deployments                       deploy       apps/v1                                true         Deployment
+replicasets                       rs           apps/v1                                true         ReplicaSet
+statefulsets                      sts          apps/v1                                true         StatefulSet
+horizontalpodautoscalers          hpa          autoscaling/v2                         true         HorizontalPodAutoscaler
+cronjobs                          cj           batch/v1                               true         CronJob
+jobs                                           batch/v1                               true         Jobstorageclasses                    sc           storage.k8s.io/v1                      false        StorageClass
+volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
+
+
+
+  # List all pods in ps output format
+  kubectl get pods
+
+  # List all pods in ps output format with more information (such as node name)
+  kubectl get pods -o wide
+
+  # List a single replication controller with specified NAME in ps output format
+  kubectl get replicationcontroller web
+
+  # List deployments in JSON output format, in the "v1" version of the "apps" API group
+  kubectl get deployments.v1.apps -o json
+
+  # List a single pod in JSON output format
+  kubectl get -o json pod web-pod-13je7
+
+  # List a pod identified by type and name specified in "pod.yaml" in JSON output format
+  kubectl get -f pod.yaml -o json
+
+
+
+Kubernetes Deployment & Replication
+
+$ kubectl create -h
+$ kubectl create deployment -h
+$ kubectl get deploy
+$ kubectl get pods
+$ kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 --replicas=3
+$ kubectl get pods
+$ kubectl get deploy
+$ kubectl edit deploy my-dep
+$ kubectl get deploy
+$ kubectl
+$ kubectl scale
+$ kubectl scale -h
+$ kubectl get deploy
+$ kubectl scale--replicas=2 deployment/my-dep
+$ kubectl scale --replicas=2 deployment/my-dep
+
+Kubernetes Deployment & Controller
+
+$ kubectl get deploy
+$ kubectl get pods
+$ kubectl delete pod my-dep-747b4ffb56-t92dp my-dep-747b4ffb56-tsz8s
+$ kubectl get pods
+
+Kubernetes Deployment & Rollout & versioning
+
+$ kubectl rollout -h
+$ kubectl rollout history deploy/my-dep
+$ kubectl get -o wide
+$ kubectl get pods --o wide
+$ kubectl get pods -o wide
+$ curl http://10.44.0.2
+$ curl http://10.44.0.1
+$ kubectl rollout history deploy/my-dep
+$ kubectl edit deploy/my-dep
+$ kubectl get pods -o wide
+$ kubectl get pods -o wide
+$ curl http://10.44.0.2
+$ curl http://10.44.0.3
+
+$ kubectl rollout history deploy/my-dep
+$ kubectl explain
+$ kubectl explain ns
+$ kubectl explain ns.spec
+$ kubectl explain pods
+$ kubectl explain pods.spec
+$ kubectl explain pods.spec.containers
+$ kubectl explain deploy
+$ kubectl explain deploy.spec
+$ kubectl explain deploy.spec.strategy
+$ kubectl explain deploy.spec.strategy.rollingUpdate
+$ kubectl get deploy
+$ kubectl delete deploy my-dep
+
+Kubernetes Deployment & Rollout & Rollback
+
+$ kubectl rollout undo -h
+$ kubectl get deploy
+$ kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 --replicas=15
+$ kubectl rollout history deploy/my-dep
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://10.44.0.5
+$ kubectl edit deploy/my-dep
+$ kubectl rollout history deploy/my-dep
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://10.44.0.12
+$ kubectl rollout status deploy/my-dep
+$ kubectl rollout history deploy/my-dep
+$ clear
+$ kubectl rollout undo deploy/my-dep --to-revision=1
+$ kubectl get pods -o wide
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://10.44.0.10
+
+Rollout
+
+$ kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 --replicas=15
+$ kubectl rollout history deploy/my-dep
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://ip-of-pod
+$ kubectl edit deploy/my-dep # Change image to scmgalaxy/nginx-devopsschoolv2
+$ kubectl rollout history deploy/my-dep
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://ip-of-pod
+
+Rollback
+
+$ kubectl rollout history deploy/my-dep
+$ kubectl rollout undo deploy/my-dep --to-revision=1
+$ kubectl rollout status deploy/my-dep
+$ kubectl get pods -o wide
+$ curl http://ip-of-pod
+ 
