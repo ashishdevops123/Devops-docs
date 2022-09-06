@@ -54,6 +54,35 @@ jenkins to build pipelines using two approaches
 scripted pipeline
 Declarative pipeline
 
+to trigger a job from cmd
+
+
+curl -X POST --user rajesh:114eae11c3af71da9c12ad17186f99ef75 http://13.126.255.42:8080/job/ashish/job/for%20cmd%20trigger/build?delay=0sec
+
+
+curl -X POST --user <username:token> <urlforjob>/build?delay=0sec
+
+To trigger a job from java
+
+download the jenkins-cli-jar
+change to that path and install java
+java -jar jenkins-cli.jar -s http://13.235.81.87:8080/ -auth rajesh:1190c7e6cb8e3b65515f8495966814ad58 who-am-i
+java -jar jenkins-cli.jar -s <jenkinsurlupton 8080> -auth  <username:token> who-am-i
+
+java -jar jenkins-cli.jar -s <jenkinsurlupton 8080> -auth  <username:token> build <jobname>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
