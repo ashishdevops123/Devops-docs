@@ -1,0 +1,51 @@
+$env:PATH=$env:PATH+';C:\Program Files\Google\Chrome\Application'
+adding the path to $env:PATH SO that chrome launches from the command line because the operating system has path 
+where it can search for the exe and it is temporary
+
+so to do it manually we need to do so much
+to resolve this chocolatey a windows package manager used
+
+    choco install terraform -y
+    refreshenv
+    terraform --version
+
+
+terraform important commands
+
+terraform validate  It will check the configuration terraform configuration file (eg main.tf) will be checked  and throws errors if any
+terraform plan It will show infrastructure that is going to create.
+terraform apply  It will make the infrastructure withrespect to the configuration is created.
+terraform show   It will  show the information related to the existing infra that was created.
+terraform destroy It will deletes the infrastructure
+
+anatomy of terraform functioning
+Terraform first validate the config file , and creates the infrastructure and generates stores the existing 
+infra state details in tfstate  if any changes done then tfstate.backup is created to maintain the 
+previous infra config and the tfstate file is updated.
+
+
+
+terraform ===> resources  ==> arguments             ====> attributes
+          ===> s3,vpc     ==> required input values ====> arguments
+
+variables are used in terraform so that the values which may change depending 
+up on the requirements are categories so that we can able to change the variable so that we cannot change entire config file.
+
+
+entire vpc 
+
+resources
+1 vpc
+2 subnets
+3 create a security group for the ec2 instance
+4 create a db security group for database 
+5 create an internet gateway for having internet to our vpc
+6 create a public route table
+7 create a private route table
+8 using route table association attach the subnets to public route table and subnets to private route table
+9 create a ec2.tf for instance
+10 for creating of a db instance first we need aws  db subnet  group 
+11 creat a db instance
+
+
+
