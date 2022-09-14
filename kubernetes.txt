@@ -139,3 +139,139 @@ $ kubectl rollout status deploy/my-dep
 $ kubectl get pods -o wide
 $ curl http://ip-of-pod
  
+kubernetes cluster = master + nodes
+master contains
+apiserver
+etcd
+scheduler
+controller manager
+kubectl
+
+nodes contains
+container runtime
+kube proxy
+kubelet 
+
+
+
+kubernetes runs images inside a pod
+pod contains containers
+
+pods
+replicasets
+deployment
+  rollout  recreate and rolling update
+  rollback
+service  
+   cluster ip
+   node port
+   load balancer
+
+Daemon set:
+  these are pods which acts as a log agent which should be run on each node upon auto scaling also.
+jobs
+  cronjobs
+  batch jobs
+
+configMaps:
+  it is used to pass the dynamic values from the mounts to the pods
+
+secrets:
+  These are similar to the configMaps but the information is sensitive.
+
+
+init containers:
+   init containers are just like a pods which runs get created
+   and runs the required stuff like a shell script which is needed 
+   to run before the main pods get created 
+
+Health checks in kubernetes:
+
+liveness probe: if the container is running and kubernetes will restart if it stopped.
+but the application running inside the pods might be in running state or it might be not responsive
+in order to deal with such thing we have liveness probes.
+liveness probe for each container will help the container to restart so that the container is serving its purpose
+by triggering some 
+script 
+or urls
+
+
+Readiness probes:
+ Readiness probes are something which has a functionality to detach the pod from the service , if the application 
+inside the container  is not working.
+
+
+Resources:
+Resource Requests => Minimum Required Resources
+Resource Limits => Maximum Required Resources
+Lets create a Pod with limits and request
+
+
+Volumes:
+
+ephemeral volumes:  These are storage for pods which are integrated with pods 
+and after the pods gets destroyed then the ephermeral volumes are also gets 
+detached.
+
+
+persistent volumes:     dynamic   (storage classes & persistent volume claims ):
+these volumes will have the data even after the pods deletion and exists beyond the lifetime
+of pods
+
+storage classes are dynamic in nature and are raised from the pods end with the help
+of persistent volume claims.
+
+persistent volume claims:
+These are the claims raised by the pod such as size and type of access like read and readwrite.
+
+provisioning classes
+static : it is a piece of storage which has been mounted by the administrator on the pods .
+dynamic 
+
+
+
+statefulsets:
+These are one type of storage mechanism which meant for each pod independently and all the differenet storage units
+will form that actual data unit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
